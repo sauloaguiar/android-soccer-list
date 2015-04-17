@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="80dp">
+    
+    <LinearLayout
+        android:id="@+id/date_info_layout"
+        android:layout_width="63dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#008000"
+        android:gravity="center"
+        >
+        <TextView
+            android:id="@+id/match_day"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="24"
+            android:textColor="#ffffff"
+            android:textSize="20dp"
+            android:fontFamily="sans-serif"
+            android:gravity="center_horizontal" />
+        <TextView
+            android:id="@+id/match_month_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MAYO"
+            android:textColor="#ffffff"
+            android:textSize="13dp"
+            android:fontFamily="sans-serif"
+            android:gravity="center_horizontal"
+            />
+        <TextView
+            android:id="@+id/match_year"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="2014"
+            android:textColor="#ffffff"
+            android:textSize="11dp"
+            android:fontFamily="sans-serif-light"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal" />
+        <TextView
+            android:id="@+id/match_hour"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="16:30 hrs"
+            android:textColor="#ffffff"
+            android:textSize="11dp"
+            android:fontFamily="sans-serif"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal" />
+
+        
+    </LinearLayout>
+
+    <!-- Match Stats -->
+    <RelativeLayout
+        android:layout_width="257dp"
+        android:layout_height="match_parent"
+        android:background="#ccccff"
+        android:layout_toRightOf="@id/date_info_layout">
+        <TextView
+            android:id="@+id/tournament_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="10dp"
+            android:textColor="#696969"
+            android:text="Copa Chile"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:id="@+id/tournament_match"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="10dp"
+            android:textColor="#696969"
+            android:layout_below="@id/tournament_name"
+            android:layout_centerHorizontal="true"
+            android:text="Grupo 1 - Fecha 1" />
+
+        <ImageView
+            android:id="@+id/home_team_logo"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:layout_marginLeft="24dp"
+            android:src="@drawable/spfc"
+            android:layout_below="@+id/tournament_match"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="24dp" />
+        <TextView
+            android:id="@+id/home_team_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"
+            android:textSize="21dp"
+            android:textColor="#696969"
+            android:layout_toRightOf="@id/home_team_logo"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="35dp" />
+        <TextView
+            android:id="@+id/visitor_team_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"
+            android:textSize="21dp"
+            android:textColor="#696969"
+            android:layout_toRightOf="@id/home_team_score"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="35dp" />
+        <ImageView
+            android:id="@+id/visitor_team_logo"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:src="@drawable/asla"
+            android:layout_below="@+id/tournament_match"
+            android:layout_alignParentRight="true"
+            android:layout_toEndOf="@+id/tournament_match"
+            android:layout_toRightOf="@+id/tournament_match"
+            />
+
+    </RelativeLayout>
+    
+
+</RelativeLayout>
