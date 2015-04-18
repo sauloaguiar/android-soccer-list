@@ -3,6 +3,7 @@ package soccer.sauloaguiar.soccerlist;
 import android.app.Activity;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
@@ -10,8 +11,14 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import rx.Observer;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 import soccer.sauloaguiar.soccerlist.model.Match;
+import soccer.sauloaguiar.soccerlist.model.Tournament;
+import soccer.sauloaguiar.soccerlist.service.SoccerService;
 import soccer.sauloaguiar.soccerlist.view.MatchAdapter;
 
 
@@ -30,8 +37,34 @@ public class MainActivity extends Activity {
         MatchAdapter adp = new MatchAdapter(getApplicationContext(), list);
 
         ((ListView)findViewById(R.id.listview)).setAdapter(adp);
+
+        loadTournaments();
     }
 
+    private void loadTournaments(){
+        SoccerService service = new SoccerService();
+        service.getApi().getTournamentData()
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<List<Tournament>>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onNext(List<Tournament> tournaments) {
+                        for (Tournament t : tournaments) {
+                            Log.i("sauloaguiar.soccerlist", t.toString());
+                        }
+                    }
+                });
+    }
 
     private void setupActionBar() {
         getActionBar().setHomeButtonEnabled(true);
