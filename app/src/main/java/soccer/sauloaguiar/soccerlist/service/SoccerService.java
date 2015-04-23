@@ -2,10 +2,10 @@ package soccer.sauloaguiar.soccerlist.service;
 
 import java.util.List;
 
+import retrofit.Callback;
 import retrofit.RequestInterceptor;
 import retrofit.RestAdapter;
 import retrofit.http.GET;
-import rx.Observable;
 import soccer.sauloaguiar.soccerlist.model.Tournament;
 
 /**
@@ -14,11 +14,11 @@ import soccer.sauloaguiar.soccerlist.model.Tournament;
 public class SoccerService {
 
     private String endpoint = "http://sauloaguiar.koding.io:3000";
-    private SoccerApi api;
+    private SoccerRestAPIEndpoint api;
 
-    public interface SoccerApi {
+    public interface SoccerRestAPIEndpoint {
         @GET("/tournaments")
-        public Observable<List<Tournament>> getTournamentData();
+        public void getTournamentData(Callback<List<Tournament>> listCallback);
     }
 
     public SoccerService(){
@@ -35,10 +35,10 @@ public class SoccerService {
                 .setLogLevel(RestAdapter.LogLevel.FULL)
                 .build();
 
-        api = restAdapter.create(SoccerApi.class);
+        api = restAdapter.create(SoccerRestAPIEndpoint.class);
     }
 
-    public SoccerApi getApi(){
+    public SoccerRestAPIEndpoint getApi(){
         return api;
     }
 }

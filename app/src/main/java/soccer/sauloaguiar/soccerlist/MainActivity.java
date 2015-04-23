@@ -13,16 +13,26 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 import rx.Observer;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import soccer.sauloaguiar.soccerlist.model.Match;
+import soccer.sauloaguiar.soccerlist.model.Round;
 import soccer.sauloaguiar.soccerlist.model.Tournament;
+import soccer.sauloaguiar.soccerlist.presenter.TournamentsPresenter;
+import soccer.sauloaguiar.soccerlist.presenter.TournamentsPresenterImpl;
 import soccer.sauloaguiar.soccerlist.service.SoccerService;
 import soccer.sauloaguiar.soccerlist.view.MatchAdapter;
+import soccer.sauloaguiar.soccerlist.view.TournamentView;
 
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements TournamentView {
+
+    private static final String TAG = MainActivity.class.getName();
+    public TournamentsPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,40 +40,29 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         setupActionBar();
 
-        ArrayList<Match> list = new ArrayList<Match>();
-        list.add(new Match());
-        list.add(new Match());
-        list.add(new Match());
-        MatchAdapter adp = new MatchAdapter(getApplicationContext(), list);
-
-        ((ListView)findViewById(R.id.listview)).setAdapter(adp);
-
+        presenter = new TournamentsPresenterImpl(this);
         loadTournaments();
     }
 
     private void loadTournaments(){
-        SoccerService service = new SoccerService();
-        service.getApi().getTournamentData()
-                .subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<List<Tournament>>() {
-                    @Override
-                    public void onCompleted() {
+        presenter.getTournamentsData();
+        /*SoccerService service = new SoccerService();
+        service.getApi().getTournamentData(new Callback<List<Tournament>>() {
+            @Override
+            public void success(List<Tournament> tournaments, Response response) {
+                Log.i(TAG, ""+response.getStatus());
+                for(Tournament t : tournaments){
+                    Log.i(TAG, t.toString());
+                }
+            }
 
-                    }
+            @Override
+            public void failure(RetrofitError error) {
 
-                    @Override
-                    public void onError(Throwable e) {
-
-                    }
-
-                    @Override
-                    public void onNext(List<Tournament> tournaments) {
-                        for (Tournament t : tournaments) {
-                            Log.i("sauloaguiar.soccerlist", t.toString());
-                        }
-                    }
-                });
+                if (error != null)
+                    Log.i(TAG, ""+ error.getSuccessType() + " - error!");
+            }
+        });*/
     }
 
     private void setupActionBar() {
@@ -93,5 +92,25 @@ public class MainActivity extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onTournamentDataLoaded(List<Tournament> data, int statusCode) {
+        ArrayList<Match> list = new ArrayList<Match>();
+        Tournament t = new Tournament();
+        Round r = new Round();
+        r.addMatch(new Match());
+        r.addMatch(new Match());
+        r.addMatch(new Match());
+        t.addRound(r);
+        List<Tournament> tournamentList = new ArrayList();
+        tournamentList.add(t);
+        list.add(new Match());
+        list.add(new Match());
+        list.add(new Match());
+        MatchAdapter adp = new MatchAdapter(getApplicationContext(), tournamentList );
+        //MatchAdapter adp = new MatchAdapter(getApplicationContext(), data );
+
+        ((ListView)findViewById(R.id.listview)).setAdapter(adp);
     }
 }

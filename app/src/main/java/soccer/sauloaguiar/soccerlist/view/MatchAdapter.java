@@ -14,20 +14,22 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.List;
 
 import soccer.sauloaguiar.soccerlist.R;
 import soccer.sauloaguiar.soccerlist.model.Match;
+import soccer.sauloaguiar.soccerlist.model.Tournament;
 import soccer.sauloaguiar.soccerlist.utils.GifDecoder;
 
 /**
  * Created by sauloaguiar on 4/16/15.
  */
-public class MatchAdapter extends ArrayAdapter<Match> {
+public class MatchAdapter extends ArrayAdapter<Tournament> {
 
     private final Context context;
-    private final ArrayList<Match> itemsArrayList;
+    private final List<Tournament> itemsArrayList;
 
-    public MatchAdapter(Context context, ArrayList<Match> array) {
+    public MatchAdapter(Context context, List<Tournament> array) {
         super(context, R.layout.match_row, array);
 
         this.context = context;
