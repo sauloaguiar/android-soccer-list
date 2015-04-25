@@ -1,0 +1,105 @@
+{
+  "tournaments": [
+    {
+      "key": 1,
+      "name": "Copa Chile",
+      "rounds": [
+        {
+          "name": "Rodada 5",
+          "start": 1231231,
+          "end": 123123123,
+          "number": 1,
+          "matches": [
+            {
+              "number": 1,
+              "team1_title": "Mi Azul",
+              "team1_code": "mia",
+              "team2_title": "DFC",
+              "team2_code": "dfc",
+              "play_at": 1400949000,
+              "score1": 1,
+              "score2": 3,
+              "group": 1
+            },
+            {
+              "number": 5,
+              "team1_title": "Mi Azul",
+              "team1_code": "mia",
+              "team2_title": "River Plate",
+              "team2_code": "carp",
+              "play_at": 1404081600,
+              "score1": 3,
+              "score2": 0,
+              "group": 1
+            },
+            {
+              "number": 2,
+              "team1_title": "River Plate",
+              "team1_code": "carp",
+              "team2_title": "Mi Azul",
+              "team2_code": "mia",
+              "play_at": 1404081600,
+              "score1": 1,
+              "score2": 5,
+              "group": 1
+            },
+            {
+              "number": 4,
+              "team1_title": "Boca Juniors",
+              "team1_code": "cabj",
+              "team2_title": "Mi Azul",
+              "team2_code": "mia",
+              "play_at": 1404081600,
+              "score1": 3,
+              "score2": 0,
+              "group": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": 2,
+      "name": "Clausura 2015",
+      "rounds": [
+        {
+          "start": 1231231,
+          "end": 123123123,
+          "number": 1,
+          "matches": [
+            {
+              "number": 1,
+              "team1_title": "Libertad",
+              "team1_code": "club",
+              "team2_title": "Mi Azul",
+              "team2_code": "mia",
+              "play_at": 1420411200,
+              "score1": 1,
+              "score2": 1
+            },
+            {
+              "number": 2,
+              "team1_title": "Mi Azul",
+              "team1_code": "mia",
+              "team2_title": "DFC",
+              "team2_code": "dfc",
+              "play_at": 1421448000,
+              "score1": 3,
+              "score2": 0
+            },
+            {
+              "number": 3,
+              "team1_title": "Sao Paulo",
+              "team1_code": "spfc",
+              "team2_title": "Strongest",
+              "team2_code": "strt",
+              "play_at": 1421448000,
+              "score1": 3,
+              "score2": 0
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
