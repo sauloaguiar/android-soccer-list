@@ -1,11 +1,15 @@
 package soccer.sauloaguiar.soccerlist.utils;
 
-import java.io.InputStream;
-import java.util.Vector;
-
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 
+import java.io.InputStream;
+import java.util.Vector;
+
+/**
+ * Functionality: GifDecoder Helper class copied from [https://code.google.com/p/android-gifview/source/browse/GifPlayer/src/jp/tomorrowkey/android/gifplayer/GifDecoder.java?r=3]
+ * created: 2015-04-18
+ */
 public class GifDecoder {
     /**
      * File read status: No errors.

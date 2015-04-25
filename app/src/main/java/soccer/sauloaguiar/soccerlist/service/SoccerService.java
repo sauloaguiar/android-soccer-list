@@ -9,11 +9,13 @@ import retrofit.http.GET;
 import soccer.sauloaguiar.soccerlist.model.Tournament;
 
 /**
- * Created by sauloaguiar on 4/17/15.
+ * Functionality: REST API Implementation using Retrofit API [http://square.github.io/retrofit/]
+ * Created: 2015-04-23
+ * @author: Saulo Aguiar
  */
 public class SoccerService {
 
-    private String endpoint = "http://sauloaguiar.koding.io:3000";
+    private String endpoint = "http://fidel-trilogy.codio.io:3000";
     private SoccerRestAPIEndpoint api;
 
     public interface SoccerRestAPIEndpoint {
@@ -32,7 +34,7 @@ public class SoccerService {
         RestAdapter restAdapter = new RestAdapter.Builder()
                 .setEndpoint(endpoint)
                 .setRequestInterceptor(requestInterceptor)
-                .setLogLevel(RestAdapter.LogLevel.FULL)
+                .setLogLevel(RestAdapter.LogLevel.NONE)
                 .build();
 
         api = restAdapter.create(SoccerRestAPIEndpoint.class);

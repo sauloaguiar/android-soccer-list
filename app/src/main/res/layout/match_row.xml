@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="80dp">
+    android:layout_height="80dp"
+    android:layout_marginBottom="1dp">
     
     <LinearLayout
         android:id="@+id/date_info_layout"
@@ -66,9 +67,9 @@
             android:layout_height="wrap_content"
             android:textSize="10dp"
             android:textColor="#696969"
-            android:text="Copa Chile"
             android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            android:enabled="false" />
 
         <TextView
             android:id="@+id/tournament_match"
@@ -77,48 +78,50 @@
             android:textSize="10dp"
             android:textColor="#696969"
             android:layout_below="@id/tournament_name"
-            android:layout_centerHorizontal="true"
-            android:text="Grupo 1 - Fecha 1" />
+            android:layout_centerHorizontal="true"/>
 
         <ImageView
             android:id="@+id/home_team_logo"
             android:layout_width="38dp"
             android:layout_height="38dp"
-            android:layout_marginLeft="24dp"
-            android:src="@drawable/spfc"
+            android:layout_marginLeft="34dp"
             android:layout_below="@+id/tournament_match"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="24dp" />
+            android:layout_alignParentStart="true" />
+
         <TextView
             android:id="@+id/home_team_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="12dp"
             android:textColor="#000000"
-            android:fontFamily="sans-serif-bold"
-            android:text="SPFC"
-            android:paddingRight="5dp"
-            android:layout_below="@+id/home_team_logo"
-            android:layout_alignRight="@+id/home_team_logo"
-            android:layout_alignEnd="@+id/home_team_logo" />
+            android:fontFamily="sans-serif-con"
+            android:textStyle="bold"
+            android:layout_alignWithParentIfMissing="false"
+            android:gravity="center|center_horizontal"
+            android:layout_alignBottom="@+id/visitor_team_name"
+            android:layout_toLeftOf="@+id/tournament_name"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
         <TextView
             android:id="@+id/home_team_score"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="1"
             android:textSize="21dp"
+            android:fontFamily="sans-serif"
+            android:textStyle="bold"
             android:textColor="#696969"
             android:layout_toRightOf="@id/home_team_logo"
-            android:layout_marginLeft="35dp"
+            android:layout_marginLeft="30dp"
             android:layout_marginTop="35dp" />
         <TextView
             android:id="@+id/visitor_team_score"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="1"
             android:textSize="21dp"
+            android:fontFamily="sans-serif"
+            android:textStyle="bold"
             android:textColor="#696969"
             android:layout_toRightOf="@id/home_team_score"
             android:layout_marginLeft="35dp"
@@ -127,22 +130,22 @@
             android:id="@+id/visitor_team_logo"
             android:layout_width="38dp"
             android:layout_height="38dp"
-            android:src="@drawable/asla"
             android:layout_above="@+id/home_team_name"
             android:layout_alignParentRight="true"
             android:layout_marginRight="28dp" />
         <TextView
+            android:id="@+id/visitor_team_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Asla"
             android:textColor="#000000"
             android:textSize="12dp"
-            android:id="@+id/visitor_team_name"
-            android:layout_marginRight="7dp"
-            android:layout_below="@id/visitor_team_logo"
-            android:layout_alignParentRight="@id/visitor_team_logo"
-            android:layout_alignEnd="@id/visitor_team_logo"
-            android:layout_alignRight="@id/visitor_team_logo"/>
+            android:textStyle="bold"
+            android:gravity="center|center_horizontal|fill_vertical"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignLeft="@+id/visitor_team_score"
+            android:layout_alignStart="@+id/visitor_team_score" />
 
 
     </RelativeLayout>

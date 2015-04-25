@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by sauloaguiar on 4/17/15.
+ * functionality: Represents a Round on the JSON Object for Serialization
+ * created: 2015-04-17
+ * @author: Saulo Aguiar
  */
 public class Round {
-    private String name;
+
     private int number;
     private List<Match> matches;
 
@@ -17,5 +19,13 @@ public class Round {
 
     public void addMatch(Match match){
         matches.add(match);
+    }
+
+    public List<Match> getMatches() {
+        return matches;
+    }
+
+    public int getRoundNumber() {
+        return number;
     }
 }

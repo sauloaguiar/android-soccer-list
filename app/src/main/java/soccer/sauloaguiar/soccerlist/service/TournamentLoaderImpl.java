@@ -2,6 +2,8 @@ package soccer.sauloaguiar.soccerlist.service;
 
 import android.util.Log;
 
+import org.apache.http.protocol.HTTP;
+
 import java.util.List;
 
 import retrofit.Callback;
@@ -9,13 +11,13 @@ import retrofit.RetrofitError;
 import retrofit.client.Response;
 import soccer.sauloaguiar.soccerlist.model.Tournament;
 import soccer.sauloaguiar.soccerlist.presenter.OnTournamentLoadedListener;
-import soccer.sauloaguiar.soccerlist.view.TournamentView;
 
 /**
- * Created by sauloaguiar on 4/23/15.
+ * Functionality: Contract Interface Implementation for Loading Data from Web
+ * Created 2015-04-23
+ * @author Saulo Aguiar
  */
 public class TournamentLoaderImpl implements TournamentLoader {
-
 
     private static final String TAG = TournamentLoaderImpl.class.getName();
 
@@ -27,9 +29,6 @@ public class TournamentLoaderImpl implements TournamentLoader {
             public void success(List<Tournament> tournaments, Response response) {
                 callback.onTournamentDataLoaded(tournaments, response.getStatus());
                 Log.i(TAG, "" + response.getStatus());
-                for(Tournament t : tournaments){
-                    Log.i(TAG, t.toString());
-                }
             }
 
             @Override

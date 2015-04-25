@@ -1,20 +1,21 @@
 package soccer.sauloaguiar.soccerlist.presenter;
 
-import android.util.Log;
-
+import java.util.ArrayList;
 import java.util.List;
 
-import retrofit.Callback;
-import retrofit.RetrofitError;
-import retrofit.client.Response;
+import soccer.sauloaguiar.soccerlist.model.ListItem;
+import soccer.sauloaguiar.soccerlist.model.Match;
+import soccer.sauloaguiar.soccerlist.model.Round;
 import soccer.sauloaguiar.soccerlist.model.Tournament;
-import soccer.sauloaguiar.soccerlist.service.SoccerService;
 import soccer.sauloaguiar.soccerlist.service.TournamentLoader;
 import soccer.sauloaguiar.soccerlist.service.TournamentLoaderImpl;
 import soccer.sauloaguiar.soccerlist.view.TournamentView;
 
 /**
- * Created by sauloaguiar on 4/23/15.
+ * Functionality: Presenter Implementation.
+ *                 Handles the REST API Result call and Delivers formatted Data to the Viewer
+ * created: 2015-23-04
+ * @author: Saulo Aguiar
  */
 public class TournamentsPresenterImpl implements TournamentsPresenter, OnTournamentLoadedListener {
 
@@ -34,7 +35,23 @@ public class TournamentsPresenterImpl implements TournamentsPresenter, OnTournam
 
     @Override
     public void onTournamentDataLoaded(List<Tournament> data, int statusCode) {
-        view.onTournamentDataLoaded(data, statusCode);
+
+        if (statusCode != 400){
+            List<ListItem> items = new ArrayList<>();
+            for ( Tournament tournament : data) {
+                for (Round round : tournament.getRounds()){
+                    for (Match match : round.getMatches()) {
+                        ListItem item = new ListItem(match, round, tournament);
+                        items.add(item);
+                    }
+                }
+
+            }
+            view.onTournamentDataLoaded(items, statusCode);
+        } else {
+            view.onRequestError(statusCode);
+        }
+
     }
 
 }

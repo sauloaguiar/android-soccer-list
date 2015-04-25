@@ -1,9 +1,9 @@
 package soccer.sauloaguiar.soccerlist.presenter;
 
-import soccer.sauloaguiar.soccerlist.view.TournamentView;
-
 /**
- * Created by sauloaguiar on 4/23/15.
+ * Functionality: Presenter Interface on the MVP Pattern
+ * created: 2015-04-23
+ * @author: Saulo Aguiar
  */
 public interface TournamentsPresenter {
     public void getTournamentsData();

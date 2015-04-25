@@ -1,36 +1,70 @@
 package soccer.sauloaguiar.soccerlist.model;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
- * Created by sauloaguiar on 4/16/15.
+ * functionality: Represents a Match on the JSON Object for Serialization
+ * created: 2015-04-16
+ * @author: Saulo Aguiar
  */
 public class Match {
-    /*
-    number": 1,
-"team1_key": "mia",
-"team1_title": "Mi Azul",
-"team1_code": "MIA",
-"team2_key": "mag",
-"team2_title": "Magallanes",
-"team2_code": "MAG",
-"play_at": "2014/07/31",
-"score1": 1,
-"score2": 3,
-"group": 1
-     */
 
-    private int number;
+    @SerializedName("team1_key")
     private String team1Key;
+    @SerializedName("team1_title")
     private String team1Title;
+    @SerializedName("team1_code")
     private String team1Code;
 
+    @SerializedName("team2_key")
     private String team2Key;
+    @SerializedName("team2_title")
     private String team2Title;
+    @SerializedName("team2_code")
     private String team2Code;
 
+    @SerializedName("play_at")
     private long timestamp;
     private int score1;
     private int score2;
+
+    @SerializedName("group")
     private int groupNumber;
+    private int number;
 
+    public String getTeam1Code() {
+        return team1Code;
+    }
 
+    public String getTeam1Name() {
+        return team1Title;
+    }
+
+    public int getTeam1Score() {
+        return score1;
+    }
+
+    public String getTeam2Name() {
+        return team2Title;
+    }
+
+    public String getTeam2Code() {
+        return team2Code;
+    }
+
+    public int getTeam2Score() {
+        return score2;
+    }
+
+    public int getGroupNumber() {
+        return groupNumber;
+    }
+
+    public long getTimestamp() {
+        return timestamp;
+    }
+
+    public int getNumber() {
+        return number;
+    }
 }
